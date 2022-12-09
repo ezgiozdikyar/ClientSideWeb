@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-
+        xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .img-earphone {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-shopping-card {
+            margin-left: 5px;
+            height: 48px;
+            vertical-align: super;
+            background-color: #eb5800;
+            color: white;            
+        }
+
+        .img-hepsijet {
+            width: 120px;
+            height: 25px;
+        }
+
+        .lilac-area {
+            border-radius: 10px;
+            margin: 10px 0px 10px 0px;
+            padding-left: 15px;           
+            height: 70px;            
+            border:1px solid #cebaff;
+            background-color:#f0eaff;
+            border-style: solid;
+        }
+        .white-area {           
+            border-radius: 10px;
+            padding: 15px 0px 15px 15px;
+            margin: 10px 0px 15px 0px;
+            height: 120px;
+            background-color: white;
+        }
+
+        .rating {
+            border-radius: 5px;
+            width: 40px;
+            font-size: 12px;
+            display: inline-block;
+            background-color: #40ad40;
+            color: white;
+            text-align: center;            
+        }
+        .rating-star{
+            margin-top: 1px;
+            margin-right: 8px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .offer {
+            font-size: 12px;            
+            border-radius: 50%;
+            width: 20px;
+            display: inline-block;
+            background-color: #eb5800;
+            color: white;
+            text-align: center;            
+        }
+
+        .btn-location {
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: #FFEFE5;
+            color: #ff6000;            
+        }
+
+        .btn-group-design{
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            color: #919191;
+            text-align: center;         
+        }
+
+        .btn-group {
+            vertical-align: super;
+        }
+        .btn-secondary {
+            margin-right:20px;            
+            font-size: 13px;
+            height: 48px;
+            background-color: #bfbfbf;
+            color: #484848;
+            text-align: center;
+            position: absolute;         
+        }
+        .btn-help{
+            height:35px;
+            font-size: 13px;
+            margin-right:20px; 
+            background-color: #bfbfbf;
+            color: #484848;           
+            text-align: center;
+            position: absolute;             
+        }
+        .quantity {
+            width: 45px;
+            text-align:left;
+        }
+        .text-green{
+            color: #090;
+        }
+        .text-color {
+            color: #eb5800;
+        }
+        .bg-gray {
+            background-color: rgb(246, 246, 246);
+        }
+        .set-padding {
+            padding-top: 20px;
+        }
+        .rowbuttons{
+            margin-left: -10px;
+        }
+        .btn-gray {
+            background-color: rgb(184, 184, 184);
+            color: black;
+        }
+        .color-gray{
+            background-color: #bfbfbf;
+            color: #484848;
+        }
+       .show-campanies{
+            color: black;
+       }
+        .font-size {
+            font-size: small;
+            text-align: center;
+        }
+        @media screen and (max-width: 992px) {
+            .heading{
+                display: none;
+            }        
+            .set-margin{
+                padding-left: 80px;
+            }    
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-6 pl-5">
+                <div class="row set-padding">
+                    <img class="img-earphone" src="./kulaklik.jfif" alt="kulaklik">
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3">
+                        <h6>Çift telefon desteği</h6>
+                    </div>
+                    <div class="col-3">
+                        <div>Yok</div>
+                    </div>
+                    <div class="col-3">
+                        <h6>Bluetooth versiyon</h6>
+                    </div>
+                    <div class="col-3">
+                        <div>5.0</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <h6>Suya & tere dayanıklı</h6>
+                    </div>
+                    <div class="col-3">
+                        <div>Hayır</div>
+                    </div>
+                    <div class="col-3">
+                        <h6>Aktif gürültü önleme (ANC)</h6>
+                    </div>
+                    <div class="col-3">
+                        <div>Yok</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <h6>Kullanım tipi</h6>
+                    </div>
+                    <div class="col-3">
+                        <div>Kulakiçi</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 bg-gray">
+                <div class="row flex-column set-padding">
+                    <div class="col-12 heading">
+                        <h4>TWS i12 Bluetooth 5.0 Kulaklık - Şarj Üniteli</h4>
+                        <div class="text-primary">TWS</div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-9 col-lg-8 col-xl-9 set-margin">
+                        <h3>115,00 TL</h3>
+                        <div>19 TL x 6 aya varan <strong>Taksitle</strong></div>
+                    </div>
+                    <div class="col-3 col-lg-4 col-xl-3">
+                        <span class="rating-star">3,5</span>
+                        <i class="fa-solid fa-star" style="color: yellow;"></i>
+                        <i class="fa-solid fa-star" style="color: yellow;"></i>
+                        <i class="fa-solid fa-star" style="color: yellow;"></i>
+                        <i class="fa-regular fa-star-half-stroke" style="color: yellow;"></i>
+                        <i class="fa-solid fa-star" style="color: rgb(208, 207, 207)"></i>
+                        <div class="font-size"><strong>7469 değerlendirme</strong></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center justify-content-lg-start">
+                        <div class="btn-group mb-2" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-group-design">Satıcı:
+                                <span class="text-primary">SFIT TEKNOLOJI...</span>
+                            </button>
+                            <button type="button" class="btn btn-group-design">Puan
+                                <span class="rating">9,4</span>
+                                <span class="offer color-gray">?</span>
+                            </button>
+                            <button type="button" class="btn btn-group-design show-campanies"><strong>Kampanyaları Gör</strong>
+                                <span class="offer">3</span>
+                            </button>
+                          </div>
+                    </div>                   
+                </div>
+                <div class="row heading">
+                    <div class="col-12 mt-1">
+                        <div class="text-green">Seçili Telefon Alana TWS i12 Bluetooth Kulaklık %10 İndirimli! </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center justify-content-lg-start">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary btn-gray">-</button>
+                            <div class="quantity">1 Adet</div>                    
+                            <button type="button" class="btn btn-secondary btn-gray">+</button>
+                        </div>
+                        <button type="button" class="btn btn-shopping-card text-align">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Sepete Ekle</button>
+                    </div>
+                </div>
+                <div class="row lilac-area d-flex align-items-center">
+                    <div class="col-9 col-lg-8 col-xl-9">
+                        <div>Eski ürününü yenisi ile değiştirmek ister misin?</div>
+                    </div>
+                    <div class="col-3 col-lg-4 col-xl-3">
+                        <button class="btn rounded-circle btn-light">?</button>
+                        <button class="btn rounded-lg btn-light">Faydalan </button>
+                    </div>
+                </div>
+                <div class="rowbuttons d-flex justify-content-center justify-content-lg-start">
+                    <button class="btn">
+                        <i class="fa-regular fa-heart"></i> Beğen
+                    </button>
+                    <button class="btn">
+                        <i class="fa-regular fa-bookmark"></i> Listeme Ekle
+                    </button>
+                    <button class="btn">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i> Karşılaştır
+                    </button>
+                </div>
+                <hr>
+                <div class="row white-area">
+                    <div class="col-9">
+                        <h5>Teslimat Seçenekleri</h5>
+                        <h6 class="mt-4">Standart Teslimat</h6>
+                        <div>En geç 14 Ekim Cuma günü kargoda</div>
+                    </div>
+                    <div class="col-3 flex-column align-items-center">
+                        <button class="btn btn-location">
+                            <i class="fa-solid fa-location-dot"></i> Konum seç
+                        </button>
+                        <img class="img-hepsijet" src="./hepsijet.jpg" alt="hepsijet">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9 d-flex">
+                        <h5>Diğer Satıcılar - </h5>
+                        <h5 class="text-color"> Tümü (2)</h5>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                        <button class="btn rounded-circle btn-secondary btn-help">
+                            <i class="fa-solid fa-question"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row white-area align-items-start">
+                    <div class="col-12">
+                        <span class="rating">9,7</span>
+                        <span class="text-primary"><strong>Torima</strong></span>
+                    </div>
+                    <div class="col-7">
+                        <div><strong>21 saat 42 dk</strong> içinde sipariş verirsen yarın kargoda</div>
+                    </div>
+                    <div class="col-2">
+                        <h6>148,97 TL</h6>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-shopping-card"> Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
