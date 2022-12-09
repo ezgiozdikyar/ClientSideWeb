@@ -1,4 +1,4 @@
-# Client Side Web
+# :sparkles: Client Side Web
 This repository includes some client side web projects.
 
 ## :pushpin: Landing Page 
