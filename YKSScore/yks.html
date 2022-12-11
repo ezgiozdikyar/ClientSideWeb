@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-
+        xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>YKS Score</title>
+    <style>
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+        }
+
+        .text-primary {
+            font-size: 13px;
+        }
+
+        hr {
+            margin-top: 0px;
+        }
+
+        .set-margin {
+            margin-bottom: 5px;
+        }
+
+        .fa-check {
+            color: rgb(3, 197, 3);
+        }
+
+        .fa-xmark {
+            color: red;
+        }
+
+        .icon-black {
+            color: black;
+        }
+
+        .form-control {
+            -webkit-border-radius: 5px !important;
+            -moz-border-radius: 5px !important;
+            border-radius: 5px !important;
+            box-shadow: 0px 2px 5px rgb(184, 184, 184);
+            max-width: 80px;
+            min-height: 40px;
+        }
+
+        .button-style {
+            width: 250px;
+        }
+
+        .card {
+            box-shadow: 5px 1px 8px 8px rgb(232, 232, 232);
+        }
+
+        /* To make responsive the icons in inputs*/
+        @media screen and (max-width:576px) {
+            .input-group i {
+                bottom: 0px;
+                right: 10px;
+            }
+        }
+
+        @media screen and (min-width:576px) {
+            .input-group i {
+                bottom: 3px;
+                right: 10px;
+            }
+        }
+
+        @media screen and (min-width:768px) {
+            .input-group i {
+                bottom: 3px;
+                right: 35px;
+            }
+        }
+
+        @media screen and (min-width:992px) {
+            .input-group i {
+                bottom: 3px;
+                right: 8px;
+            }
+        }
+        @media screen and (min-width:1200px) {
+            .input-group i {
+                right: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex flex-wrap">
+        <h1 class="ml-3">2023 YKS, TYT, AYT Puan Hesaplama</h1>
+        <div class="col-12 col-lg-6">
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h3 class="text-center mb-2">AYT <small> Puanı Hesaplama </small></h3>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-3 text-center"><i class="fa-solid fa-check fa-lg icon-black"></i></div>
+                        <div class="col-3 text-center"> <i class="fa-solid fa-xmark fa-lg icon-black"></i></div>
+                        <div class="col-2 text-center"> Net </div>
+                    </div>
+                    <div class="row text-black-50 mt-2 mb-1">
+                        Türk Dili ve Edebiyatı ve Sosyal Bilimler-1 Testi
+                    </div>
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Türk Dili ve Edebiyatı</strong>
+                            <div class="text-primary">24 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytTurkishTrue" type="number" min="0" max="24"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytTurkishFalse" type="number" min="0" max="24"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytTurkishResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Tarih-1</strong>
+                            <div class="text-primary">10 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytHistoryTrue" type="number" min="0" max="10"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytHistoryFalse" type="number" min="0" max="10"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytHistoryResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Coğrafya-1</strong>
+                            <div class="text-primary">6 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytGeographyTrue" type="number" min="0" max="6"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytGeographyFalse" type="number" min="0" max="6"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytGeographyResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr>
+                    <div class="row text-black-50">Sosyal Bilimler-2 Testi</div>
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Tarih-2</strong>
+                            <div class="text-primary">11 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytHistory2True" type="number" min="0" max="11"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytHistory2False" type="number" min="0" max="11"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytHistory2Result" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Coğrafya-2</strong>
+                            <div class="text-primary">11 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytGeography2True" type="number" min="0" max="11"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytGeography2False" type="number" min="0" max="11"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytGeography2Result" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Felsefe Grubu</strong>
+                            <div class="text-primary">12 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytPhilosophyTrue" type="number" min="0" max="12"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytPhilosophyFalse" type="number" min="0" max="12"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytPhilosophyResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Din Kültürü ve Ahlak Bilgisi / Ek Felsefe Grubu</strong>
+                            <div class="text-primary">6 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytReligionTrue" type="number" min="0" max="6"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytReligionFalse" type="number" min="0" max="6"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytReligionResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr>
+                    <div class="row text-black-50"> Matematik Testi</div>
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Matematik </strong>
+                            <div class="text-primary">40 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytMathsTrue" type="number" min="0" max="40"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytMathsFalse" type="number" min="0" max="40"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytMathsResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr>
+                    <div class="row text-black-50">Fen Bilimleri Testi </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Fizik</strong>
+                            <div class="text-primary">14 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytPhysicsTrue" type="number" min="0" max="14"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytPhysicsFalse" type="number" min="0" max="14"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytPhysicsResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Kimya</strong>
+                            <div class="text-primary">13 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytChemistryTrue" type="number" min="0" max="13"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytChemistryFalse" type="number" min="0" max="13"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytChemistryResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong>Biyoloji</strong>
+                            <div class="text-primary">13 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytBiologyTrue" type="number" min="0" max="13"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="aytBiologyFalse" type="number" min="0" max="13"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="aytBiologyResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card mt-2">
+                <div class="card-body ">
+                    <h3 class="text-center">TYT<small> Puanı Hesaplama </small></h3>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-3 text-center"><i class="fa-solid fa-check fa-lg icon-black"></i> </div>
+                        <div class="col-3 text-center"> <i class="fa-solid fa-xmark fa-lg icon-black"></i> </div>
+                        <div class="col-2 text-center">Net</div>
+                    </div>
+                    <div class="row mt-2 d-flex align-items-baseline">
+                        <div class="col-4"><strong> Türkçe</strong>
+                            <div class="text-primary">40 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytTurkishTrue" type="number" min="0" max="40"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytTurkishFalse" type="number" min="0" max="40"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="tytTurkishResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Sosyal Bilimler</strong>
+                            <div class="text-primary">20 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytSocialScienceTrue" type="number" min="0" max="20"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytSocialScienceFalse" type="number" min="0" max="20"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="tytSocialScienceResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr class="set-margin">
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Temel Matematik</strong>
+                            <div class="text-primary">40 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytMathsTrue" type="number" min="0" max="40"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytMathsFalse" type="number" min="0" max="40"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="tytMathsResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                    <hr>
+                    <div class="row d-flex align-items-baseline">
+                        <div class="col-4"><strong> Fen Bilimleri</strong>
+                            <div class="text-primary">20 soru</div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytScienceTrue" type="number" min="0" max="20"
+                                    class="form-control text-center pl-3" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group input-group-sm mb-3 justify-content-center">
+                                <input id="tytScienceFalse" type="number" min="0" max="20"
+                                    class="form-control text-center pl-4" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="-">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                        <input id="tytScienceResult" class="col-2 text-center input-box border border-0 pl-4"
+                            type="number" placeholder="-" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-4 mb-2">
+                <div class="card-body ">
+                    <h3 class="text-center">Ortaöğretim<small> Başarı Puanı</small></h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Diploma Notu</strong>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group input-group-sm mb-3 justify-content-end">
+                                <input id="diploma" type="number" min="0" max="100" class="form-control text-center"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>OBP</strong>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group input-group-sm mb-3 justify-content-end">
+                                <input id="obp" type="number" class="form-control text-center"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Geçen Sene Bir Bölüme
+                                    Yerleştim</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body ">
+                    <h3 class="text-center">SONUÇLAR</h3>
+                    <div class="row">
+                        <div class="col-4"><strong>Puan Türü</strong></div>
+                        <div class="col-4"><strong>Ham Puan</strong></div>
+                        <div class="col-4"><strong>Yerleştirme Puanı</strong></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-4"><strong>TYT</strong> </div>
+                        <input id="tytResult1" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                        <input id="tytResult2" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4"><strong>SAY</strong></div>
+                        <input id="sayResult1" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                        <input id="sayResult2" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-4"><strong>EA</strong></div>
+                        <input id="eaResult1" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                        <input id="eaResult2" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-4"><strong>SÖZ</strong></div>
+                        <input id="sozResult1" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                        <input id="sozResult2" class="col-4 input-box border border-0" type="number" placeholder="-"
+                            readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button id="btnCalculate" type="button"
+                        class="btn btn-danger button-style mt-3 mb-3">Hesapla</button>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <button id="btnClear" type="button" onclick="Clear()"
+                        class="btn btn-outline-danger button-style mt-3 mb-3">Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let diploma = document.querySelector('#diploma');
+        let obp = document.querySelector('#obp');
+        let btnCalculate = document.querySelector('#btnCalculate');
+
+        diploma.addEventListener('change', (event) => {
+            obp.value = event.target.value * 5;
+        });
+
+        btnCalculate.addEventListener('click', (event) => {
+
+            setNetScore();
+
+            calculateTYTBaseScore();
+
+            calculateTYTScore2();
+
+            calculateSAYBaseScore();
+
+            calculateSAYScore2();
+
+            calculateSOZBaseScore();
+
+            calculateSOZScore2();
+
+            calculateEABaseScore();
+
+            calculateEAScore2();
+        });
+
+        function setNetScore() {
+            let inputArray = ["aytTurkish", "aytHistory", "aytGeography", "aytHistory2", "aytGeography2",
+                "aytPhilosophy", "aytReligion", "aytMaths", "aytPhysics", "aytChemistry", "aytBiology", "tytTurkish", "tytSocialScience",
+                "tytMaths", "tytScience"]
+            let noOfQuestions = [24, 10, 6, 11, 11, 11, 6, 40, 14, 13, 13, 40, 20, 40, 20];
+
+            for (let i = 0; i < inputArray.length; i++) {
+                let trueAnswers = parseFloat(document.getElementById(inputArray[i] + "True").value);
+                let falseAnswers = parseFloat(document.getElementById(inputArray[i] + "False").value);
+                if (isNaN(trueAnswers)) trueAnswers = 0;
+                if (isNaN(falseAnswers)) falseAnswers = 0;
+                if (trueAnswers + falseAnswers > noOfQuestions[i]) {
+                    alert("Maximum soru sayısını geçemezsiniz!");
+                    break;
+                }
+                else {
+                    document.getElementById(inputArray[i] + "Result").value = trueAnswers - (falseAnswers * 0.25);
+                }
+            }
+            let aytTurkishResult = document.querySelector('#aytTurkishResult');
+            let aytHistoryResult = document.querySelector('#aytHistoryResult');
+            let aytGeographyResult = document.querySelector('#aytGeographyResult');
+            let aytHistory2Result = document.querySelector('#aytHistory2Result');
+            let aytGeography2Result = document.querySelector('#aytGeography2Result');
+            let aytPhilosophyResult = document.querySelector('#aytPhilosophyResult');
+            let aytReligionResult = document.querySelector('#aytReligionResult');
+            let aytMathsResult = document.querySelector('#aytMathsResult');
+            let aytPhysicsResult = document.querySelector('#aytPhysicsResult');
+            let aytChemistryResult = document.querySelector('#aytChemistryResult');
+            let aytBiologyResult = document.querySelector('#aytBiologyResult');
+            let tytTurkishResult = document.querySelector('#tytTurkishResult');
+            let tytSocialScienceResult = document.querySelector('#tytSocialScienceResult');
+            let tytMathsResult = document.querySelector('#tytMathsResult');
+            let tytScienceResult = document.querySelector('#tytScienceResult');
+
+            let tytResult1 = document.querySelector('#tytResult1');
+            let tytResult2 = document.querySelector('#tytResult2');
+            let sayResult1 = document.querySelector('#sayResult1');
+            let sayResult2 = document.querySelector('#sayResult2');
+            let sozResult1 = document.querySelector('#sozResult1');
+            let sozResult2 = document.querySelector('#sozResult2');
+            let eaResult1 = document.querySelector('#eaResult1');
+            let eaResult2 = document.querySelector('#eaResult2');
+        }
+
+        function calculateTYTBaseScore() {
+            tytResult1.value = 5 * (parseFloat(tytTurkishResult.value) + parseFloat(tytSocialScienceResult.value)
+                + parseFloat(tytMathsResult.value) + parseFloat(tytScienceResult.value));
+        }
+
+        function calculateTYTScore2() {
+            if (document.querySelector('#inlineCheckbox1').checked) {
+                tytResult2.value = (diploma.value * 0.3) + parseFloat(tytResult1.value);
+            } else {
+                tytResult2.value = (diploma.value * 0.6) + parseFloat(tytResult1.value);
+            }
+        }
+
+        function calculateSAYBaseScore() {
+            sayResult1.value = 6.25 * (parseFloat(aytMathsResult.value) + parseFloat(aytPhysicsResult.value)
+                + parseFloat(aytChemistryResult.value) + parseFloat(aytBiologyResult.value));
+            sayResult1.value = (0.6 * parseFloat(sayResult1.value)) + (0.4 * parseFloat(tytResult1.value));
+        }
+
+        function calculateSAYScore2() {
+            if (document.querySelector('#inlineCheckbox1').checked) {
+                sayResult2.value = (diploma.value * 0.3) + parseFloat(sayResult1.value);
+            } else {
+                sayResult2.value = (diploma.value * 0.6) + parseFloat(sayResult1.value);
+            }
+        }
+        function calculateSOZBaseScore() {
+            sozResult1.value = 6.25 * (parseFloat(aytTurkishResult.value) + parseFloat(aytHistoryResult.value)
+                + parseFloat(aytGeographyResult.value) + parseFloat(aytHistory2Result.value) + parseFloat(aytGeography2Result.value)
+                + parseFloat(aytPhilosophyResult.value) + parseFloat(aytReligionResult.value));
+            sozResult1.value = (0.6 * parseFloat(sozResult1.value)) + (0.4 * parseFloat(tytResult1.value));
+        }
+
+        function calculateSOZScore2() {
+            if (document.querySelector('#inlineCheckbox1').checked) {
+                sozResult2.value = (diploma.value * 0.3) + parseFloat(sozResult1.value);
+            } else {
+                sozResult2.value = (diploma.value * 0.6) + parseFloat(sozResult1.value);
+            }
+        }
+
+        function calculateEABaseScore() {
+            eaResult1.value = (parseFloat(sozResult1.value) + 12.5 * (parseFloat(aytMathsResult.value))) * 0.5;
+        }
+
+        function calculateEAScore2() {
+            if (document.querySelector('#inlineCheckbox1').checked) {
+                eaResult2.value = (diploma.value * 0.3) + parseFloat(eaResult1.value);
+            } else {
+                eaResult2.value = (diploma.value * 0.6) + parseFloat(eaResult1.value);
+            }
+        }
+
+        function Clear() {
+            const inputList = document.querySelectorAll("input");
+            for (let i = 0; i < inputList.length; i++) {
+                inputList[i].value = "-";
+            }
+        };
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
