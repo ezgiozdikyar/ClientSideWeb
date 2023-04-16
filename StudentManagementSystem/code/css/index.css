@@ -1,0 +1,30 @@
+#esogu-logo{
+    height: 120px;
+}
+.header-padding{
+    padding-left: 72px;
+}
+h4{
+    font-weight: normal;
+}
+.btn-success,.btn-primary,.btn-danger{
+    width: 80px;
+}
+#btn-person{
+    height: 40px;
+    width: 50px;
+}
+#page-numbers-content{
+    margin-left: 75px;
+}
+.table-striped>tbody>tr:nth-child(even), 
+.table-striped>tbody>tr:nth-child(even) {
+   background-color: rgb(228, 233, 250); 
+ }
+ .table-striped>tbody>tr:nth-child(odd), 
+.table-striped>tbody>tr:nth-child(odd) {
+   background-color: rgb(255, 255, 255); 
+ }
+ thead{
+    background-color: rgb(240, 240, 240);
+ }

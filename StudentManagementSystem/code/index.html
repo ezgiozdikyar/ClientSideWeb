@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <title>Öğrenci Yönetim Sistemi</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-end">
+            <h5 class="mr-4 mt-3">Merhaba, John Doe</h5>
+        </div>
+        <div class="row d-flex justify-content-end">
+            <button class="btn btn-secondary mr-4">Çıkış yap</button>
+        </div>
+        <div class="row">
+            <div class="col-3 col-lg-2 d-flex justify-content-end">
+                <img id="esogu-logo" src="./images/esogu-logo.png" class="pl-2" alt="esogu-logo">
+            </div>
+            <div class="col-9 col-lg-10 d-flex flex-column justify-content-center">
+                <h3 class="mb-1">Eskişehir Osmangazi Üniversitesi</h3>
+                <h4>Öğrenci Yönetim Sistemi</h4>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+            <h3 class="header-padding mt-3">Öğrenci Listesi</h3>
+            <button id="btn-person" class="btn btn-primary mr-4" onclick="addStudent()"><i id="person-icon" class="bi bi-person-plus"></i></button>
+        </div>
+        <table class="table table-striped">
+        </table>
+        <div class="row d-flex justify-content-between mr-2">
+            <div id="page-numbers-content">24 öğrenciden 1 - 8 arası gösteriliyor.</div>
+            <div id="page-numbers"></div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary page-size-buttons"
+                    onclick="setPageSize(5,this)">5</button>
+                <button type="button" class="btn btn-outline-primary page-size-buttons active"
+                    onclick="setPageSize(8,this)">8</button>
+                <button type="button" class="btn btn-outline-primary page-size-buttons"
+                    onclick="setPageSize(10,this)">10</button>
+            </div>
+        </div>
+       
+        <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="addStudentsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-start" id="addStudentsModalLabel"> <i class="bi bi-info-circle-fill text-primary"></i> Eklenecek Öğrenci Bilgileri</h5>
+                  <button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                  </button>
+                </div>
+              
+                <div class="modal-body">
+                        <form id="form-add" class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="has-validation col-12 col-md-6 mt-1">
+                                    <label for="input-name" class="form-label p-0">İsim</label>
+                                    <input type="text" name="input-fname" pattern="[A-Za-zŞşÇçİÜüĞğÖöı]{3,}" class="form-control mr-2 mt-1"
+                                        id="input-fname" required>
+                                    <div class="invalid-feedback">İsim en az 3 harf içermelidir.</div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-1" name="input-group">
+                                    <label for="input-lname" class="col-form-label p-0">Soyisim</label>
+                                    <input type="text" name="input-lname" pattern="[A-Za-zŞşÇçİÜüĞğÖöı]{3,}" class="form-control mr-2 mt-2"
+                                        id="input-lname" required>
+                                    <div class="invalid-feedback">Soyisim en az 3 harf içermelidir.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mt-1">
+                                    <label for="input-no" class="form-label p-0">Öğrenci Numarası</label>
+                                    <input type="number" name="input-no" class="form-control mr-2 mt-1" id="input-no" maxlength="12"
+                                        minlength="12" required>
+                                    <div class="invalid-feedback">Öğrenci numarası 12 basamaktan oluşmalıdır.</div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-1">
+                                    <label for="input-dept" class="form-label p-0">Bölüm</label>
+                                    <select class="custom-select form-select mt-1" name="input-dept" id="input-dept" required>
+                                        <option value="" disabled selected>Bölüm Seçiniz</option>
+                                        <option value="1">Bilgisayar Müh.</option>
+                                        <option value="2">Elektrik-Elektronik Müh.</option>
+                                        <option value="3">Endüstri Müh.</option>
+                                        <option value="4">İnşaat Müh.</option>
+                                    </select>
+                                    <div class="invalid-feedback">Lütfen bir bölüm seçiniz.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mt-1">
+                                    <label for="input-pob" class="form-label p-0">Doğum Yeri</label>
+                                    <input type="text" name="input-pob" pattern="[A-Za-zŞşÇçİÜüĞğÖöı]{3,}" class="form-control mr-2 mt-1"
+                                        id="input-pob" aria-describedby="validationServer03Feedback" required>
+                                    <div class="invalid-feedback">Doğum yeri en az 3 harf içermelidir.</div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-1">
+                                    <label for="input-dob" class="col-form-label p-0">Doğum Tarihi</label>
+                                    <input type="date" name="input-dob" class="form-control mr-2 mt-2" id="input-dob" required>
+                                    <div class="invalid-feedback">Lütfen bir tarih seçiniz.</div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="btn-add" class="btn btn-primary">Add</button>
+                              </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    console.log(form)
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+    <script type="text/javascript" src="/code/data.js"></script>
+    <script src="/code/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
